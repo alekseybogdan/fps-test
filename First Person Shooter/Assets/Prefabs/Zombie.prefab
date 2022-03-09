@@ -135,7 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7020c9703e54f0e48bbbd11f4809d596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 0}
+  knockbackTime: 1
+  kick: 1.8
 --- !u!114 &5003257927894632962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c8135bd6d25b446a8d6e3617aa1533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitPoints: 5
 --- !u!114 &2994450935879448849
 MonoBehaviour:
   m_ObjectHideFlags: 0

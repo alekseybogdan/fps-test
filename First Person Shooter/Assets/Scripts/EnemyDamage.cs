@@ -1,24 +1,24 @@
-using System;
 using UnityEngine;
+using System.Collections;
 
 public class EnemyDamage : MonoBehaviour
 {
-    //Private means only this script can access the variable.
-    private int hitNumber;
+    public int hitPoints;
+    private int _hitPoints;
+    //public GameObject ragdoll;
 
-    //Unity stores the collider it hits and we can access it via the name other.
-    void OnCollisionEnter(Collision other)
+    private void OnEnable()
     {
-        //We compare the tag in the other object to the tag name we set earlier.
-        if (other.transform.CompareTag("Bullet"))
+        _hitPoints = hitPoints;
+    }
+
+    public void ApplyDamage(int damage)
+    {
+        _hitPoints -= damage;
+        if (_hitPoints <= 0)
         {
-            //If the comparison is true, we increase the hit number.
-            hitNumber++;
-        }
-        //if the hit number is equal to 3 we destroy this object.
-        if (hitNumber == 3)
-        {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Instantiate(ragdoll, transform.position, transform.rotation);
         }
     }
 }
