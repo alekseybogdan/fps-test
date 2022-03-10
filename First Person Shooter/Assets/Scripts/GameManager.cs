@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Spawners
 {
     public GameObject go;
     public bool active;
+
     public Spawners(GameObject newGo, bool newBool)
     {
         go = newGo;
@@ -18,14 +21,16 @@ public class Spawners
 public class GameManager : MonoBehaviour
 {
     public GameObject panel;
+
     public delegate void RestartRounds();
+
     public static event RestartRounds RoundComplete;
 
     private int health;
     private int roundsSurvived;
     private int currentRound;
     private PlayerDamage playerDamage;
-    private Text panelText;
+    private TMP_Text panelText;
 
     public List<Spawners> spawner = new List<Spawners>();
 
@@ -34,7 +39,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         panel.SetActive(false);
         playerDamage = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDamage>();
-        panelText = panel.GetComponentInChildren<Text>();
+        panelText = panel.GetComponentInChildren<TMP_Text>();
         foreach (GameObject go in GameObject.FindObjectsOfType(typeof(GameObject)))
         {
             if (go.name.Contains("Spawner"))
