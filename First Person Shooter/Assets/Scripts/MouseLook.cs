@@ -2,34 +2,44 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    private GameObject player;
-    private float minClamp = -45;
-    private float maxClamp = 45;
-    [HideInInspector]
-    public Vector2 rotation;
-    private Vector2 currentLookRot;
-    private Vector2 rotationV = new Vector2(0, 0);
-    public float lookSensitivity = 2;
-    public float lookSmoothDamp = 0.1f;
+    [Header("References")]
+    [SerializeField] WallRun wallRun;
+
+    [SerializeField] private float sensX;
+    [SerializeField] private float sensY;
+
+    [SerializeField] Transform cam;
+    [SerializeField] Transform orientation;
+
+    float mouseX;
+    float mouseY;
+
+    float multiplier = 0.01f;
+
+    float xRotation;
+    float yRotation;
+
+    private float minClamp = -90f;
+    private float maxClamp = 90f;
 
     void Start()
     {
-        //Access the player GameObject.
-        player = transform.parent.gameObject;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Player input from the mouse
-        rotation.y += Input.GetAxis("Mouse Y") * lookSensitivity;
-        //Limit ability look up and down.
-        rotation.y = Mathf.Clamp(rotation.y, minClamp, maxClamp);
-        //Rotate the character around based on the mouse X position.
-        player.transform.RotateAround(transform.position, Vector3.up, Input.GetAxis("Mouse X") * lookSensitivity);
-        //Smooth the current Y rotation for looking up and down.
-        currentLookRot.y = Mathf.SmoothDamp(currentLookRot.y, rotation.y, ref rotationV.y, lookSmoothDamp);
-        //Update the camera X rotation based on the values generated.
-        transform.localEulerAngles = new Vector3(-currentLookRot.y, 0, 0);
+        mouseX = Input.GetAxisRaw("Mouse X");
+        mouseY = Input.GetAxisRaw("Mouse Y");
+
+        yRotation += mouseX * sensX * multiplier;
+        xRotation -= mouseY * sensY * multiplier;
+
+        xRotation = Mathf.Clamp(xRotation, minClamp, maxClamp);
+
+        cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, wallRun.tilt);
+        orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }
