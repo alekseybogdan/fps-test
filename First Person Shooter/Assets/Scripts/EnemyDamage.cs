@@ -1,21 +1,21 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
-public class EnemyDamage : MonoBehaviour
+public class EnemyDamage : MonoBehaviour, IDamageable
 {
-    public int hitPoints;
-    private int _hitPoints;
+    public float Health { get; set; }
     //public GameObject ragdoll;
 
     private void OnEnable()
     {
-        _hitPoints = hitPoints;
+        Health = 100f;
     }
 
-    public void ApplyDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        _hitPoints -= damage;
-        if (_hitPoints <= 0)
+        Health -= damage;
+        if (Health <= 0)
         {
             gameObject.SetActive(false);
             //Instantiate(ragdoll, transform.position, transform.rotation);

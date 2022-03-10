@@ -56,10 +56,10 @@ public class MoveToPosition : MonoBehaviour
             contact = other.contacts[0];
             hit = true;
             var bulletHit = other.transform.GetComponent<BulletHit>();
-            int damage = 1;
+            float damage = 20;
             //if (bulletHit != null) damage = bulletHit.damage;
             //else damage = 10;
-            enemyDamage.ApplyDamage(damage);
+            enemyDamage.TakeDamage(damage);
         }
     }
 }
