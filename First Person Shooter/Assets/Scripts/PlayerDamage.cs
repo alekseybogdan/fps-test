@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class PlayerDamage : MonoBehaviour
 {
     //Use this to reference the text in the canvas
-    public Text healthPanel;
+    public TMP_Text healthPanel;
     //Sets default health to 100
     public int health = 100;
     private void Start()

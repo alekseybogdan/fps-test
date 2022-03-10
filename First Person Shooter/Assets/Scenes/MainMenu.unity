@@ -180,7 +180,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Zombie Panik
+  m_text: 'Zombie Panic
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 970db742ad71ec144a201e84b22fd41c, type: 2}
   m_sharedMaterial: {fileID: 8032071114121159191, guid: 970db742ad71ec144a201e84b22fd41c, type: 2}
