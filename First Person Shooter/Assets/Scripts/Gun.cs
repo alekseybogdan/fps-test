@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour {
     [SerializeField] private ParticleSystem impactParticleSystem;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private AudioClip shootSound;
-    
+
     float timeSinceLastShot;
     private AudioSource _audioSource;
 
