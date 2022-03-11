@@ -5,7 +5,7 @@ using TMPro;
 public class PlayerDamage : MonoBehaviour
 {
     //Use this to reference the text in the canvas
-    public TMP_Text healthPanel;
+    public TextMeshProUGUI healthPanel;
     //Sets default health to 100
     public int health = 100;
     private void Start()

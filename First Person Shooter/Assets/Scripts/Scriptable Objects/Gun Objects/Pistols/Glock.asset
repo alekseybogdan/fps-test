@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Glock 17
   damage: 16
   maxDistance: 100
-  currentAmmo: 13
+  currentAmmo: 0
   magSize: 17
   fireRate: 200
   reloadTime: 1

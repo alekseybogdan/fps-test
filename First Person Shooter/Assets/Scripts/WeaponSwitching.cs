@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour {
 
     [Header("References")]
     [SerializeField] private Transform[] weapons;
-
+    
     [Header("Keys")]
     [SerializeField] private KeyCode[] keys;
 
@@ -50,7 +51,7 @@ public class WeaponSwitching : MonoBehaviour {
             weapons[i].gameObject.SetActive(i == weaponIndex);
 
         timeSinceLastSwitch = 0f;
-
+        
         OnWeaponSelected();
     }
 
